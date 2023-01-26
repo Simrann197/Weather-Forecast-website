@@ -23,13 +23,34 @@ fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, op
 		wind_degrees.innerHTML = response.wind_degrees
 		sunrise.innerHTML = response.sunrise
 		sunset.innerHTML = response.sunset
+		addrecent(response);
 	})
 	.catch(err => console.error(err));
 }
-
 submit.addEventListener("click", (e)=>{
 	e.preventDefault()
 	getWeather(city.value)
 })
 
 getWeather("Delhi")
+city.value="Delhi";
+var con=document.getElementById("recent-container")
+function addrecent(response)
+{
+    var tr=document.createElement("tr");
+    var th=document.createElement("th");
+    th.classList.add("text-middle");
+    th.setAttribute("scope","row");
+    th.innerHTML=city.value;
+    tr.append(th);
+    var td=document.createElement("td");
+    td.innerHTML=response.temp;
+    tr.append(td);
+    td=document.createElement("td");
+    td.innerHTML=response.humidity;
+    tr.append(td);
+    td=document.createElement("td");
+    td.innerHTML=response.wind_speed;
+    tr.append(td);
+    con.append(tr);
+}
