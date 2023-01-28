@@ -34,14 +34,6 @@ submit.addEventListener("click", (e)=>{
 
 getWeather("Delhi")
 city.value="Delhi";
-<<<<<<< Updated upstream
-var con=document.getElementById("recent-container")
-function addrecent(response)
-{
-    var tr=document.createElement("tr");
-    var th=document.createElement("th");
-=======
-var c=document.getElementById("icon");
 var con=document.getElementById("recent-container")
 function addrecent(response)
 {
@@ -68,7 +60,6 @@ function addrecent(response)
     var th=document.createElement("th");
 	var td=document.createElement("td");
 	tr.append(icont);
->>>>>>> Stashed changes
     th.classList.add("text-middle");
     th.setAttribute("scope","row");
     th.innerHTML=city.value;
@@ -83,8 +74,4 @@ function addrecent(response)
     td.innerHTML=response.wind_speed;
     tr.append(td);
     con.append(tr);
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
