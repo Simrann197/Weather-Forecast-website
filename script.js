@@ -35,11 +35,13 @@ submit.addEventListener("click", (e)=>{
 })
 
 getWeather("Delhi")
-city.value="Delhi"
 var con=document.getElementById("recent-container")
 var icon=document.createElement("img");
+city.value="Delhi";
+var con=document.getElementById("recent-container")
 function addrecent(response)
 {
+	var icon=document.createElement("img");
 	var icont=document.createElement("img");
 	var icons=document.getElementById("icons");
 	icon.setAttribute("id","gif");
@@ -53,6 +55,7 @@ function addrecent(response)
 	var td=document.createElement("td");
 	td.append(icont);
 	tr.append(td);
+	tr.append(icont);
     th.classList.add("text-middle");
     th.setAttribute("scope","row");
     th.innerHTML=city.value;
