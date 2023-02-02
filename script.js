@@ -5,11 +5,12 @@ const options = {
 		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
 	}
 };
+let cloud_pct;
 const getWeather = (city)=>{
 	cityName.innerHTML = city
 fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
-	.then(response => response.json())
-	.then((response) => {
+.then(response => response.json())
+.then((response) => {
 		console.log(response)
 		temp.innerHTML = response.temp
 		temp2.innerHTML = response.temp
@@ -23,6 +24,7 @@ fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, op
 		wind_degrees.innerHTML = response.wind_degrees
 		sunrise.innerHTML = response.sunrise
 		sunset.innerHTML = response.sunset
+		cloud_pct=response.cloud_pct;
 		addrecent(response);
 	})
 	.catch(err => console.error(err));
@@ -33,42 +35,24 @@ submit.addEventListener("click", (e)=>{
 })
 
 getWeather("Delhi")
-city.value="Delhi";
-<<<<<<< Updated upstream
+city.value="Delhi"
 var con=document.getElementById("recent-container")
+var icon=document.createElement("img");
 function addrecent(response)
 {
-    var tr=document.createElement("tr");
-    var th=document.createElement("th");
-=======
-var c=document.getElementById("icon");
-var con=document.getElementById("recent-container")
-function addrecent(response)
-{
-	var icon=document.createElement("img");
 	var icont=document.createElement("img");
 	var icons=document.getElementById("icons");
-	icons.innerHTML=""
 	icon.setAttribute("id","gif");
 	icon.style="height:80px";
-	icont.style="height:50px";
+	icont.style="height:35px";
 	icon.setAttribute("src","");
-	if(response.temp>9)
-	{
-		icon.setAttribute("src","sun.gif");
-		icont.setAttribute("src","sun.gif");
-	}
-	else if(response.temp<0)
-	{
-		icon.setAttribute("src","snow.gif");
-		icont.setAttribute("src","snow.gif");
-	}
+	calculate_type(icont,response.temp,cloud_pct);
 	icons.append(icon);
     var tr=document.createElement("tr");
     var th=document.createElement("th");
 	var td=document.createElement("td");
-	tr.append(icont);
->>>>>>> Stashed changes
+	td.append(icont);
+	tr.append(td);
     th.classList.add("text-middle");
     th.setAttribute("scope","row");
     th.innerHTML=city.value;
@@ -83,8 +67,38 @@ function addrecent(response)
     td.innerHTML=response.wind_speed;
     tr.append(td);
     con.append(tr);
-<<<<<<< Updated upstream
 }
-=======
+
+function calculate_type(icont,_feels_like,_cloud_pct)
+{
+	if(_feels_like>15&&_cloud_pct<50)
+	{
+		icon.setAttribute("src","gif/sun.gif");
+		icont.setAttribute("src","gif/sun.gif");
+	}
+	else if(_feels_like>15&&_cloud_pct>50)
+	{
+		icon.setAttribute("src","gif/cloudy.gif");
+		icont.setAttribute("src","gif/cloudy.gif");
+	}
+	else if(_feels_like<0)
+	{
+		icon.setAttribute("src","gif/rain.gif");
+		icont.setAttribute("src","gif/rain.gif");
+	}
+	else if(_feels_like<0&&_cloud_pct<40)
+	{
+		icon.setAttribute("src","gif/snow.gif");
+		icont.setAttribute("src","gif/snow.gif");
+	}
+	else if(_feels_like>20&&_cloud_pct<40)
+	{
+		icon.setAttribute("src","gif/storm.gif");
+		icont.setAttribute("src","gif/storm.gif");
+	}
+	else
+	{
+		icon.setAttribute("src","gif/storm.gif");
+		icont.setAttribute("src","gif/storm.gif");
+	}
 }
->>>>>>> Stashed changes
