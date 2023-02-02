@@ -50,26 +50,25 @@ function addrecent(response)
 	icon.setAttribute("src","");
 	calculate_type(icont,response.temp,cloud_pct);
 	icons.append(icon);
-    var tr=document.createElement("tr");
-    var th=document.createElement("th");
+    	var tr=document.createElement("tr");
+    	var th=document.createElement("th");
 	var td=document.createElement("td");
 	td.append(icont);
 	tr.append(td);
-	tr.append(icont);
-    th.classList.add("text-middle");
-    th.setAttribute("scope","row");
-    th.innerHTML=city.value;
-    tr.append(th);
-    var td=document.createElement("td");
-    td.innerHTML=response.temp;
-    tr.append(td);
-    td=document.createElement("td");
-    td.innerHTML=response.humidity;
-    tr.append(td);
-    td=document.createElement("td");
-    td.innerHTML=response.wind_speed;
-    tr.append(td);
-    con.append(tr);
+    	th.classList.add("text-middle");
+    	th.setAttribute("scope","row");
+    	th.innerHTML=city.value;
+    	tr.append(th);
+    	var td=document.createElement("td");
+    	td.innerHTML=response.temp;
+    	tr.append(td);
+    	td=document.createElement("td");
+    	td.innerHTML=response.humidity;
+    	tr.append(td);
+    	td=document.createElement("td");
+    	td.innerHTML=response.wind_speed;
+    	tr.append(td);
+    	con.append(tr);
 }
 
 function calculate_type(icont,_feels_like,_cloud_pct)
