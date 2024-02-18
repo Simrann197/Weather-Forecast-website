@@ -1,2 +1,2 @@
 # Weather-Forecast-website
-This is a website which mainly tells the weather (including Temperature, humidity, Sun Info, etc) of any state or country you type.
+The goal of this project is to use JavaScript, HTML, CSS, Node.js, and Express.js to develop a weather website. While Node.js and Express.js power the backend functionality, HTML and CSS are used to construct the frontend. In order to retrieve and present current weather information, such as temperature, humidity, dawn and sunset timings, dependent on user input, JavaScript facilitates interaction with a weather API. With the help of this integration, customers may effortlessly access precise meteorological data via a user-friendly online interface.
